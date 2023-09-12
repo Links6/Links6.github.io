@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Links</title>
+</head>
+<body style="background-color:#2a0040;">
+  <center><img src="banner.jpg" alt="Banner" width="800" height="100"></center>
+    <center><h1><FONT COLOR="white">Links File Management</h1></center>
+  <br>
+  <center><h2><FONT COLOR="white">Links HTML Client</h2>
+    
+    <!-- Hidden file input -->
+    <input type="file" id="fileInput" style="display: none;">
+
+    <!-- Button to trigger file selection -->
+    <center><button onclick="openFile()">Open HTML File</button></center>
+
+    <!-- Display file content -->
+    <div id="fileContent"></div>
+
+    <script>
+        function openFile() {
+            const fileInput = document.getElementById('fileInput');
+            const fileContent = document.getElementById('fileContent');
+
+            fileInput.addEventListener('change', function() {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    fileContent.innerHTML = event.target.result;
+                };
+
+                reader.readAsText(file);
+            });
+
+            // Trigger the file input dialog
+            fileInput.click();
+        }
+    </script>
+    <!-- Hidden file input -->
+    <input type="file" id="fileInput" accept=".mp3" style="display: none;">
+<center><h2><FONT COLOR="white">Links mp3 Client</h2>
+    <!-- Button to trigger file selection -->
+    <button onclick="openMP3File()">Open MP3 File</button>
+
+    <!-- Audio player -->
+    <audio controls id="audioPlayer" style="display: none;">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function openMP3File() {
+            const fileInput = document.getElementById('fileInput');
+            const audioPlayer = document.getElementById('audioPlayer');
+
+            fileInput.addEventListener('change', function() {
+                const file = fileInput.files[0];
+
+                // Check if the selected file is an MP3 file
+                if (file && file.type.startsWith('audio/')) {
+                    audioPlayer.src = URL.createObjectURL(file);
+                    audioPlayer.style.display = 'block';
+                } else {
+                    alert('Please select a valid audio file (MP3).');
+                }
+            });
+
+            // Trigger the file input dialog
+            fileInput.click();
+        }
+    </script>
+  <!-- Hidden file input -->
+    <input type="file" id="fileInput" accept=".jpg, .jpeg, .png" style="display: none;">
+<center><h2><FONT COLOR="white">Links Image Client</h2>
+  <center><h3><FONT COLOR="white">(supports image types jpeg, and png)</h3>
+    <!-- Button to trigger file selection -->
+    <button onclick="openImageFile()">Open Image File</button>
+
+    <!-- Image container -->
+    <div id="imageContainer" style="display: none;">
+        <img id="selectedImage" alt="Selected Image">
+    </div>
+
+    <script>
+        function openImageFile() {
+            const fileInput = document.getElementById('fileInput');
+            const imageContainer = document.getElementById('imageContainer');
+            const selectedImage = document.getElementById('selectedImage');
+
+            fileInput.addEventListener('change', function() {
+                const file = fileInput.files[0];
+
+                // Check if the selected file is an image (jpg or png)
+                if (file && (file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png')) {
+                    selectedImage.src = URL.createObjectURL(file);
+                    imageContainer.style.display = 'block';
+                } else {
+                    alert('Please select a valid image file (JPG or PNG).');
+                }
+            });
+
+            // Trigger the file input dialog
+            fileInput.click();
+        }
+    </script>
+    <!-- Hidden file input -->
+    <input type="file" id="fileInput" accept=".mp4" style="display: none;">
+<center><h2><FONT COLOR="white">Links mp4 Client</h2>
+    <!-- Button to trigger file selection -->
+    <button onclick="openMP4File()">Open MP4 File</button>
+
+    <!-- Video player -->
+    <video controls id="videoPlayer" style="display: none;">
+        Your browser does not support the video element.
+    </video>
+
+    <script>
+        function openMP4File() {
+            const fileInput = document.getElementById('fileInput');
+            const videoPlayer = document.getElementById('videoPlayer');
+
+            fileInput.addEventListener('change', function() {
+                const file = fileInput.files[0];
+
+                // Check if the selected file is an MP4 file
+                if (file && file.type.startsWith('video/')) {
+                    videoPlayer.src = URL.createObjectURL(file);
+                    videoPlayer.style.display = 'block';
+                } else {
+                    alert('Please select a valid video file (MP4).');
+                }
+            });
+
+            // Trigger the file input dialog
+            fileInput.click();
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
